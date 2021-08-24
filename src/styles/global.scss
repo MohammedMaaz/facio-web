@@ -1,0 +1,97 @@
+:root {
+  --base-width: #{nth(map-get($base-dims, desktop), 1)};
+  --base-height: #{nth(map-get($base-dims, desktop), 2)};
+  @each $key, $val in map-get($theme, "default") {
+    --#{$key}: #{$val};
+  }
+}
+
+//for phone
+@include media(map-get($mq-exp, phone)...) {
+  :root {
+    --base-width: #{nth(map-get($base-dims, phone), 1)};
+    --base-height: #{nth(map-get($base-dims, phone), 2)};
+  }
+}
+
+//for tab
+@include media(map-get($mq-exp, tab)...) {
+  :root {
+    --base-width: #{nth(map-get($base-dims, tab), 1)};
+    --base-height: #{nth(map-get($base-dims, tab), 2)};
+  }
+}
+
+//for desktop
+@include media(map-get($mq-exp, desktop)...) {
+  :root {
+    --base-width: #{nth(map-get($base-dims, desktop), 1)};
+    --base-height: #{nth(map-get($base-dims, desktop), 2)};
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: theme(font_family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: theme(font_color);
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+  color: theme(primary_color);
+}
+
+.grid-center {
+  display: grid;
+  place-items: center;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.none {
+  display: none;
+}
+
+.show-on-xs {
+  display: none;
+}
+
+.left {
+  float: left;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.right {
+  float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.flex {
+  display: flex;
+}
+
+.rounded {
+  border-radius: 999px;
+}
+
+.circular {
+  border-radius: 50%;
+}

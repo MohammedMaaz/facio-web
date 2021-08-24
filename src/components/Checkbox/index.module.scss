@@ -1,0 +1,49 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: theme(font_medium);
+  user-select: none;
+  padding-left: 22px;
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  span {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid;
+    border-color: inherit;
+    transition: border-color theme(anim_time);
+
+    &:after {
+      content: "";
+      position: absolute;
+      display: block;
+      left: 5px;
+      top: 2px;
+      width: 3px;
+      height: 6.5px;
+      border: solid;
+      border-color: inherit;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+      transition: border-color theme(anim_time);
+    }
+  }
+
+  input:checked ~ span,
+  input:checked ~ span:after {
+    border-color: theme(primary_color);
+  }
+}

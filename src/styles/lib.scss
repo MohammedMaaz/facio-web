@@ -1,0 +1,87 @@
+@import "../../node_modules/include-media/dist/include-media";
+@import "./theme.scss";
+
+//all global variables, mixins and functions should be declared here
+//to be used throughout the project without @import statement
+
+//breakpoints for media mixin (include-media lib)
+$breakpoints: (
+  sm: 320px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1920px,
+);
+
+//expressions for easy and intuitive media queries
+$mq-exp: (
+  phone: (
+    "<md",
+  ),
+  tab: (
+    ">=md",
+    "<=lg",
+  ),
+  desktop: (
+    ">lg",
+    "<xl",
+  ),
+  desktop-fhd: (
+    ">=xl",
+  ),
+);
+
+$base-dims: (
+  phone: (
+    187.5,
+    406,
+  ),
+  tab: (
+    250,
+    333,
+  ),
+  desktop: (
+    960,
+    540,
+  ),
+);
+
+//px to vw acc.to base-width
+@function w($px) {
+  @return calc(100vw / var(--base-width) * #{$px});
+}
+
+//px to vh acc. to base-height
+@function h($px) {
+  @return calc(100vh / var(--base-height) * #{$px});
+}
+
+//get a theme property
+@function theme($key) {
+  @return var(--#{$key});
+}
+
+@function theme_sass($name, $value) {
+  @return map-get(map-get($theme, $name), $value);
+}
+
+//fake border to make it animatable
+@mixin border-fake($width, $color, $direction, $isactive) {
+  content: "";
+  position: absolute;
+  width: calc(100% + (#{$width} * 2));
+  height: calc(100% + (#{$width} * 2));
+  top: calc(#{$width}/ -1);
+  left: calc(#{$width}/ -1);
+  background: linear-gradient(to right, $color 0%, $color 100%);
+  background-repeat: no-repeat, no-repeat;
+  @if $isactive {
+    background-size: 200% $width, $width 400%, $width 400%, 55% $width,
+      55% $width;
+    background-position: 50% 100%, 0% 100%, 100% 100%, 100% 0%, 0% 0%;
+    transform: scaleX(1) rotate(180deg * $direction);
+  } @else {
+    background-size: 100% $width, $width 200%, $width 200%, 0% $width, 0% $width;
+    background-position: 50% 100%, 0% 0%, 100% 0%, 100% 0%, 0% 0%;
+    transform: scaleX(0) rotate(180deg * $direction);
+  }
+}

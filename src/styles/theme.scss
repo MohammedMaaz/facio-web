@@ -1,0 +1,24 @@
+$theme: (
+  "default": (
+    primary_color: #28d8a1,
+    bg_color: #fff,
+    border_radius: 0.25rem,
+    font_family: #{"Roboto",
+    sans-serif},
+    font_color: #333,
+    smoke: #dadada,
+    border_width: 1.5px,
+    spin_large: 50px,
+    spin_medium: 30px,
+    spin_small: 16px,
+    btn_font_color: #fff,
+    font_small: 0.75rem,
+    font_medium: 0.875rem,
+    font_large: 1rem,
+    anim_time: 0.4s,
+  ),
+  "dark": (
+    bg_color: #000,
+    font_color: #fff,
+  ),
+);

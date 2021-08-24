@@ -1,0 +1,26 @@
+.container {
+  border-radius: theme(border_radius);
+  color: theme(btn_font_color);
+  user-select: none;
+  box-shadow: 0 0 15px 0
+    mix(theme_sass("default", smoke), theme_sass("default", primary_color), 40%);
+  transition: box-shadow theme(anim_time);
+  text-transform: uppercase;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  outline: none;
+  border: none;
+
+  &:hover {
+    box-shadow: 0 0 20px 4px
+      mix(
+        theme_sass("default", smoke),
+        theme_sass("default", primary_color),
+        20%
+      );
+  }
+}

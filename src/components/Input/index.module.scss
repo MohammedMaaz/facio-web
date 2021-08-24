@@ -1,0 +1,53 @@
+.input {
+  border: 0;
+  outline: 0;
+  display: flex;
+  flex: 1;
+  color: inherit;
+  padding: 0.7rem 0.6rem;
+  z-index: 2;
+  :focus {
+    outline: 0;
+  }
+  font: inherit;
+  background-color: transparent;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+  :before {
+    transition: transform theme(anim_time) ease-in-out,
+      background-position theme(anim_time) ease-in-out,
+      background-size theme(anim_time) ease-in-out;
+    @include border-fake(theme(border_width), theme(primary_color), 0, false);
+    z-index: 1;
+  }
+  :after {
+    @include border-fake(theme(border_width), theme(smoke), 0, true);
+  }
+
+  > div {
+    margin-top: 0.25rem;
+    font-size: calc(#{theme(font_large)} + 2px);
+    color: theme(font_color);
+    fill-opacity: 0.5;
+    margin-left: 0.25rem;
+  }
+
+  input[type="password"]:not(:placeholder-shown) {
+    font: large Verdana, sans-serif;
+    letter-spacing: 1px;
+    padding: 0.525rem 0.6rem;
+  }
+}
+
+.focused {
+  :before {
+    @include border-fake(theme(border_width), theme(primary_color), 0, true);
+    z-index: 1;
+  }
+}

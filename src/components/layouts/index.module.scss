@@ -1,0 +1,27 @@
+.auth {
+  display: grid;
+  place-items: center;
+  text-align: center;
+
+  > div {
+    display: inline-block;
+    padding-bottom: 5rem;
+    font-size: theme(font_medium);
+
+    @include media(map-get($mq-exp, phone)...) {
+      display: block;
+      width: 100%;
+      max-width: 540px;
+      margin: auto;
+    }
+  }
+}
+
+.empty {
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  padding: 3rem 1.5rem;
+  background-color: theme(bg_color);
+  transition: all theme(anim_time);
+}
