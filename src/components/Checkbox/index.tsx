@@ -16,19 +16,17 @@ export default function Checkbox({ label = "", labelStyle, ...props }: Props) {
   const { name } = useTheme();
 
   return (
-    <label
-      style={{
-        borderColor: opacity(
-          sassExports.theme[name === "dark" ? "default" : "dark"].bg_color,
-          name === "dark" ? 0.5 : 0.25
-        ),
-        ...(labelStyle || {}),
-      }}
-      className={styles.container}
-    >
+    <label style={labelStyle} className={styles.container}>
       {label}
       <input {...props} type="checkbox" />
-      <span></span>
+      <span
+        style={{
+          color: opacity(
+            sassExports.theme[name === "dark" ? "default" : "dark"].bg_color,
+            name === "dark" ? 0.5 : 0.25
+          ),
+        }}
+      ></span>
     </label>
   );
 }

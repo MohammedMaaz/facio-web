@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
 import Input from "../../components/Input";
 import Logo from "../../components/Logo";
 import { GoMail } from "react-icons/go";
@@ -7,19 +7,31 @@ import styles from "./index.module.scss";
 import Button from "../../components/Button";
 import Checkbox from "../../components/Checkbox";
 import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { login } from "../../models/auth";
 
 export default function Login() {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector(
+    (state) => state.auth.loginStatus === "loading"
+  );
+
+  const onSubmit = useCallback((e: any) => {
+    e.preventDefault();
+    const elems = e.target.elements;
+    dispatch(
+      login({
+        email: elems.email.value,
+        password: elems.password.value,
+        remember: elems.remember.checked,
+      })
+    );
+  }, []);
+
   return (
     <>
-      <Logo style={{ marginBottom: `1rem` }} />
-      <form
-        onSubmit={(e: any) => {
-          e.preventDefault();
-          console.log("email:", e.target.elements["email"].value);
-          console.log("password:", e.target.elements["password"].value);
-          console.log("remember:", e.target.elements["remember"].checked);
-        }}
-      >
+      <Logo />
+      <form onSubmit={onSubmit}>
         <Input
           leftIcon={<GoMail />}
           inputProps={{
@@ -35,7 +47,7 @@ export default function Login() {
             name: "password",
             type: "password",
             placeholder: "password",
-            minLength: 6,
+            minLength: 8,
             required: true,
           }}
         />
@@ -44,15 +56,19 @@ export default function Login() {
             defaultChecked={false}
             name="remember"
             label="Remember me"
-            onChange={console.log}
           />
           <Link to="/forgot-password">Forgot Password?</Link>
         </div>
-        <Button htmlType="submit" title="Login" size="large" />
+        <Button
+          loading={isLoading}
+          htmlType="submit"
+          title="Login"
+          size="large"
+        />
       </form>
-      <div className={styles.no_account}>
+      <p className={styles.no_account}>
         Don't have an account? <Link to="/signup">Signup here</Link>
-      </div>
+      </p>
     </>
   );
 }

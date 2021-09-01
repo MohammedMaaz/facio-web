@@ -17,33 +17,31 @@
 
   span {
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 0;
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     border-radius: 50%;
-    border: 2px solid;
-    border-color: inherit;
-    transition: border-color theme(anim_time);
+    box-shadow: 0 0 0 2px;
+    transition: theme(anim_time);
 
     &:after {
+      color: transparent;
       content: "";
       position: absolute;
       display: block;
-      left: 5px;
+      left: 6px;
       top: 2px;
-      width: 3px;
-      height: 6.5px;
-      border: solid;
-      border-color: inherit;
-      border-width: 0 2px 2px 0;
+      width: 2.5px;
+      height: 6px;
+      box-shadow: 1px 1px 0 1px;
       transform: rotate(45deg);
-      transition: border-color theme(anim_time);
+      transition: theme(anim_time);
     }
   }
 
   input:checked ~ span,
   input:checked ~ span:after {
-    border-color: theme(primary_color);
+    color: theme(primary_color) !important;
   }
 }

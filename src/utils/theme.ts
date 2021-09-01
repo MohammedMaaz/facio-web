@@ -1,5 +1,5 @@
 import { sassExports } from ".";
-import { AppModel, setTheme } from "../models/app";
+import { AppState, setTheme } from "../models/app";
 
 const STORAGE_KEY = "__theme__";
 
@@ -20,7 +20,7 @@ function set(name: string) {
   store.dispatch(setTheme(newTheme));
 }
 
-function get(): AppModel["theme"] {
+function get(): AppState["theme"] {
   const storedTheme = localStorage.getItem(STORAGE_KEY);
   if (storedTheme) return JSON.parse(storedTheme);
 

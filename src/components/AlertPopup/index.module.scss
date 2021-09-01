@@ -1,0 +1,41 @@
+.popup_container {
+  border-radius: theme(border_radius);
+  text-align: center;
+  padding: 1.5rem 2rem;
+  background-color: theme(bg_color);
+  text-align: left;
+
+  min-width: 400px;
+  @include media(map-get($mq-exp, phone)...) {
+    width: 85vw;
+    min-width: unset;
+  }
+
+  > h1 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+    font-size: calc(#{theme(font_large)} + 0.2rem);
+  }
+
+  > p {
+    margin-bottom: 3rem;
+    font-size: theme(font_medium);
+  }
+
+  > div {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.container {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  transition: all theme(anim_time) ease-in-out;
+}

@@ -25,8 +25,10 @@ export default function Spin({ size = "medium", color, style }: Props) {
         style={{
           width: `calc(${width} - (${width}/10))`,
           height: `calc(${width} - (${width}/10))`,
-          border: `calc(${width}/10) solid ${color || theme.primary_color}`,
-          borderColor: `${color} transparent transparent transparent`,
+          border: `calc(${width}/10) solid`,
+          borderColor: `${
+            color || theme.primary_color
+          } transparent transparent transparent`,
         }}
       />
       <div />

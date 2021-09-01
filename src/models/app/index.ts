@@ -2,24 +2,30 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../store";
 import Theme from "../../utils/theme";
 
-export interface AppModel {
+//types
+export interface AppState {
   theme: { name: string; value: { [key: string]: string } };
 }
 
-const initialState: AppModel = { theme: Theme.get() };
+//initial state
+const initialState: AppState = { theme: Theme.get() };
 
-export const appModel = createSlice({
+//slice
+export const appSlice = createSlice({
   name: "app",
   initialState,
   reducers: {
-    setTheme: (state, action: PayloadAction<AppModel["theme"]>) => {
+    setTheme: (state, action: PayloadAction<AppState["theme"]>) => {
       state.theme = action.payload;
     },
   },
 });
 
-export const { setTheme } = appModel.actions;
+//action creators
+export const { setTheme } = appSlice.actions;
 
+//selectors
 export const selectTheme = (state: RootState) => state.app.theme;
 
-export default appModel.reducer;
+//default export
+export default appSlice.reducer;

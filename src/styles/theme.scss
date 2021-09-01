@@ -1,7 +1,12 @@
 $theme: (
   "default": (
     primary_color: #28d8a1,
+    danger_color: #e74c3c,
+    warning_color: #f1c40f,
+    success_color: #07bc0c,
     bg_color: #fff,
+    black: "#000",
+    white: #fff,
     border_radius: 0.25rem,
     font_family: #{"Roboto",
     sans-serif},
@@ -18,7 +23,7 @@ $theme: (
     anim_time: 0.4s,
   ),
   "dark": (
-    bg_color: #000,
+    bg_color: #18191a,
     font_color: #fff,
   ),
 );

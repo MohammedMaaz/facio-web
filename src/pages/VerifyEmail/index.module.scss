@@ -1,0 +1,27 @@
+.note {
+  padding-bottom: 2rem;
+}
+
+.contact {
+  margin-top: 1.5rem;
+}
+
+.container {
+  width: 300px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  @include media(map-get($mq-exp, phone)...) {
+    width: 100%;
+  }
+}
+
+.welcome {
+  width: 220px;
+  @include media(map-get($mq-exp, phone)...) {
+    width: 55vw;
+    max-width: 220px;
+    min-width: 180px;
+  }
+}

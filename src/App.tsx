@@ -1,8 +1,14 @@
 import React, { useLayoutEffect } from "react";
 import Router from "./components/Router";
-import ThemeSwitch from "./components/ThemeSwitch";
 import "./styles/global.scss";
 import Theme from "./utils/theme";
+import { Slide, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { initAxiosConfig } from "./utils/api";
+import TopMenu from "./components/TopMenu";
+import { AlertPopupContainer } from "./components/AlertPopup";
+
+initAxiosConfig();
 
 function App() {
   useLayoutEffect(() => {
@@ -12,7 +18,8 @@ function App() {
   return (
     <div>
       <Router />
-      <ThemeSwitch />
+      <ToastContainer hideProgressBar transition={Slide} />
+      <AlertPopupContainer />
     </div>
   );
 }

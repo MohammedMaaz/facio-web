@@ -1,0 +1,14 @@
+.container {
+  height: 100%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+
+  @include media(map-get($mq-exp, phone)...) {
+    width: 100%;
+    max-width: 540px;
+  }
+}

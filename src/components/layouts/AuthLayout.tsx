@@ -1,10 +1,11 @@
 import React, { ReactNode } from "react";
-import ThemeSwitch from "../ThemeSwitch";
+import TopMenu from "../TopMenu";
 import styles from "./index.module.scss";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div className={`${styles.auth} ${styles.empty}`}>
+    <div className={`${styles.empty} ${styles.auth}`}>
+      <TopMenu logo={false} />
       <div>{children}</div>
     </div>
   );

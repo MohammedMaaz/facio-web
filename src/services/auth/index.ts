@@ -1,39 +1,70 @@
 import axios from "axios";
-import { API_BASE_URL } from "../../config/api";
 
-//set default config
-axios.defaults.baseURL = API_BASE_URL;
-axios.defaults.headers.post["Content-Type"] = "application/json";
-
-interface creds {
+export interface creds {
   email: string;
   password: string;
 }
 
-async function login({ email, password }: creds) {
-  const { data } = await axios.post("/login", { email, password });
+async function login(arg: creds) {
+  const { data } = await axios.post("/auth/login", arg);
   return data;
 }
 
-async function signup({ email, password }: creds) {
-  const { data } = await axios.post("/register", { email, password });
+async function signup(arg: creds & { name: string }) {
+  const { data } = await axios.post("/auth/register", arg);
   return data;
 }
 
-async function verify_email() {}
-
-async function refresh_token() {
-  const { data } = await axios.post("/refresh-tokens");
+async function send_verification_email() {
+  const { data } = await axios.post("/auth/send-verification-email");
   return data;
 }
 
-async function logout() {}
+async function verify_email({ token }: { token: string }) {
+  const { data } = await axios.post("/auth/verify-email", null, {
+    params: { token },
+  });
+  return data;
+}
+
+async function refresh_token({ refreshToken }: { refreshToken: string }) {
+  const { data } = await axios.post("/auth/refresh-tokens", { refreshToken });
+  return data;
+}
+
+async function forgot_password({ email }: { email: string }) {
+  const { data } = await axios.post("/auth/forgot-password", { email });
+  return data;
+}
+
+async function reset_password({
+  token,
+  password,
+}: {
+  token: string;
+  password: string;
+}) {
+  const { data } = await axios.post(
+    "/auth/reset-password",
+    { password },
+    { params: { token } }
+  );
+  return data;
+}
+
+async function logout({ refreshToken }: { refreshToken: string }) {
+  const { data } = await axios.post("/auth/logout", { refreshToken });
+  return data;
+}
 
 const Auth = {
   login,
   signup,
+  send_verification_email,
   verify_email,
   refresh_token,
+  forgot_password,
+  reset_password,
   logout,
 };
 

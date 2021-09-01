@@ -1,7 +1,6 @@
-import { selectLoggedIn } from "../models/auth";
+import { selectIsLoggedIn } from "../models/auth";
 import { useAppSelector } from "./redux";
 
-export const useAuth = () => {
-  const isLoggedIn = useAppSelector(selectLoggedIn);
-  return { isLoggedIn };
+export const useAuthState = () => {
+  return useAppSelector(selectIsLoggedIn);
 };

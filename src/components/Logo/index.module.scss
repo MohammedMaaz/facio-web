@@ -1,9 +1,5 @@
 .logo {
   width: 100%;
-  -webkit-transition: all theme(anim_time);
-  -moz-transition: all theme(anim_time);
-  -ms-transition: all theme(anim_time);
-  -o-transition: all theme(anim_time);
   transition: all theme(anim_time);
 }
 
@@ -12,12 +8,6 @@
 }
 
 .container {
-  width: 300px;
   display: inline-block;
   overflow: hidden;
-  @include media(map-get($mq-exp, phone)...) {
-    width: 65vw;
-    max-width: 300px;
-    min-width: 180px;
-  }
 }
