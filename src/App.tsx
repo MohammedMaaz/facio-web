@@ -5,7 +5,6 @@ import Theme from "./utils/theme";
 import { Slide, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { initAxiosConfig } from "./utils/api";
-import TopMenu from "./components/TopMenu";
 import { AlertPopupContainer } from "./components/AlertPopup";
 
 initAxiosConfig();

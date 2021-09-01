@@ -8,7 +8,6 @@ module.exports = {
             Array.isArray(e.use) &&
             e.use.forEach((el) => {
               if (el.loader && el.loader.includes("sass-loader")) {
-                // el.options.fdsfsd.fdsfsd = 5;
                 el.options.additionalData = `@import "${__dirname.replace(
                   /\\/g,
                   "/"
