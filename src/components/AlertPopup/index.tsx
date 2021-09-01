@@ -48,7 +48,7 @@ function Popup({
 
   const shadowColor =
     name === "dark"
-      ? theme.black
+      ? theme._black
       : mixColors(theme.font_color, theme.bg_color, 70);
 
   return (
@@ -101,7 +101,7 @@ export function AlertPopupContainer() {
       onClick={onClose}
       style={{
         backgroundColor: opacity(
-          theme[name === "dark" ? "white" : "black"],
+          theme[name === "dark" ? "_white" : "_black"],
           name === "dark" ? 0.2 : 0.4
         ),
         opacity: modalVisible ? 1 : 0,
