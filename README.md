@@ -1,5 +1,3 @@
-# React Coding Challenge
-
 ## Features:
 
 - Periodic background fetch for refresh token
